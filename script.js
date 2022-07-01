@@ -65,17 +65,13 @@ const render = (() => {
         };
     };
 
-    function resetBoard() {
-        let resetButton = document.querySelector('#resetButton');
-        resetButton.addEventListener('click', () => {
-            for (let j = 0; j < board.length; j++) {
-                board[j] = ''
-                let square = document.getElementById(j);
-                square.innerText = board[j]
-            }
-        })
-    }
-    resetBoard();
+    let resetButton = document.querySelector('#resetButton');
+    resetButton.addEventListener('click', () => {
+        for (let j = 0; j < board.length; j++) {
+            board[j] = '';
+            createBoard();
+        };
+    });
     return { createBoard };
 })();
 
