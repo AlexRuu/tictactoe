@@ -35,13 +35,11 @@ const playGame = (() => {
             currentPiece = playerTwo.piece;
             board.splice(e.target.id, 1, currentPiece);
             winner = playerTwo.name;
-            console.log(currentPiece)
         }
         else if (currentPiece === playerTwo.piece && desiredSquare === '') {
             currentPiece = playerOne.piece;
             board.splice(e.target.id, 1, currentPiece);
             winner = playerOne.name;
-            console.log(currentPiece)
         };
 
         const { createBoard } = render;
@@ -55,31 +53,59 @@ const playGame = (() => {
         }
         else if (board[3] === board[4] && board[4] === board[5] && board[3] != '') {
             console.log(winner)
+            removeMove();
         }
         else if (board[6] === board[7] && board[7] === board[8] && board[6] != '') {
             console.log(winner)
+            removeMove();
         }
         else if (board[0] === board[3] && board[3] === board[6] && board[0] != '') {
             console.log(winner)
+            removeMove();
         }
         else if (board[1] === board[4] && board[4] === board[7] && board[1] != '') {
             console.log(winner)
+            removeMove();
         }
         else if (board[2] === board[5] && board[5] === board[8] && board[2] != '') {
             console.log(winner)
+            removeMove();
         }
         else if (board[0] === board[4] && board[4] === board[8] && board[0] != '') {
             console.log(winner)
+            removeMove();
         }
         else if (board[2] === board[4] && board[4] === board[6] && board[2] != '') {
             console.log(winner)
+            removeMove();
+        }
+        else {
+            let counter = 0;
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] != '') {
+                    counter++;
+                    if (counter === 9) {
+                        console.log('draw')
+                        removeMove();
+                    };
+                };
+            };
         };
-    }
+    };
 
     let selectedSquare = document.querySelectorAll('.gridBox');
-    selectedSquare.forEach((div) => {
-        div.addEventListener('click', mark)
-    })
+    function addMove() {
+        selectedSquare.forEach((div) => {
+            div.addEventListener('click', mark)
+        })
+    }
+    function removeMove() {
+        selectedSquare.forEach((div) => {
+            div.removeEventListener('click', mark)
+        })
+    }
+    addMove();
+
 })();
 
 
