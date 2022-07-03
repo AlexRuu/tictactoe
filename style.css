@@ -18,8 +18,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    width: 40rem;
-    height: 40rem;
+    width: 30rem;
+    height: 30rem;
 }
 
 .gridBox {
@@ -28,7 +28,7 @@ body {
     align-items: center;
     border: solid black;
     padding: 10px;
-    font-size: 8rem;
+    font-size: 5rem;
     font-family: Open Sans, Arial, Helvetica, sans-serif;
     font-weight: bolder;
 }
