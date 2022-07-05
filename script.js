@@ -19,6 +19,7 @@ const playerTwo = player('Player Two', 'O');
 // Playing the game
 const playGame = (() => {
     const { board } = gameBoard;
+    let newBtn = document.querySelector('#resetButton')
 
     let currentPiece = '';
     let winner = '';
@@ -44,61 +45,54 @@ const playGame = (() => {
         };
 
         const { createBoard } = render;
-
         createBoard();
         checkWinner();
+        newBtn.addEventListener('click', () => {
+            currentPiece = '';
+        });
     };
 
     // Look for a winner
     function checkWinner() {
         // Horizontal Win
         if (board[0] === board[1] && board[1] === board[2] && board[0] !== '') {
-            console.log(winner)
             removeMove();
             currentPiece = '';
-            displayWinner();
             return;
         }
         else if (board[3] === board[4] && board[4] === board[5] && board[3] != '') {
-            console.log(winner)
             removeMove();
             currentPiece = '';
             return;
         }
         else if (board[6] === board[7] && board[7] === board[8] && board[6] != '') {
-            console.log(winner)
             removeMove();
             currentPiece = '';
             return;
         }
         // Vertical Win
         else if (board[0] === board[3] && board[3] === board[6] && board[0] != '') {
-            console.log(winner)
             removeMove();
             currentPiece = '';
             return;
         }
         else if (board[1] === board[4] && board[4] === board[7] && board[1] != '') {
-            console.log(winner)
             removeMove();
             currentPiece = '';
             return;
         }
         else if (board[2] === board[5] && board[5] === board[8] && board[2] != '') {
-            console.log(winner)
             removeMove();
             currentPiece = '';
             return;
         }
         // Diagonal Win
         else if (board[0] === board[4] && board[4] === board[8] && board[0] != '') {
-            console.log(winner)
             removeMove();
             currentPiece = '';
             return;
         }
         else if (board[2] === board[4] && board[4] === board[6] && board[2] != '') {
-            console.log(winner)
             removeMove();
             currentPiece = '';
             return;
@@ -134,20 +128,11 @@ const playGame = (() => {
     addMove();
     return {addMove}
 
-    function displayWinner() {
-        const winnerModal = document.querySelector('.winner');
-        let newGameButton = document.createElement('button');
-        let winnerText = document.createElement('div');
-
-        winnerText.innerText = `${winner} wins!`;
-        winnerText.classList.add('winnerText');
-
-        newGameButton.classList.add('newGame');
-        newGameButton.innerText = "New Game";
-        winnerModal.appendChild(winnerText);
-        winnerModal.appendChild(newGameButton);
+    // Winner message 
+    function winnerMessage() {
+        let winner = document.querySelector('.winner');
+        
     }
-
 })();
 
 
@@ -155,6 +140,7 @@ const playGame = (() => {
 const render = (() => {
     const { board } = gameBoard;
     const { addMove } = playGame;
+    let { currentPiece } = playGame
 
     function createBoard() {
         for (let i = 0; i < board.length; i++) {
@@ -166,6 +152,7 @@ const render = (() => {
         resetButton.addEventListener('click', () => {
             for (let j = 0; j < board.length; j++) {
                 board[j] = '';
+                currentPiece = '';
             };
             addMove();
             createBoard();
