@@ -58,43 +58,51 @@ const playGame = (() => {
         if (board[0] === board[1] && board[1] === board[2] && board[0] !== '') {
             removeMove();
             currentPiece = '';
+            winnerMessage(winner);
             return;
         }
         else if (board[3] === board[4] && board[4] === board[5] && board[3] != '') {
             removeMove();
             currentPiece = '';
+            winnerMessage(winner);
             return;
         }
         else if (board[6] === board[7] && board[7] === board[8] && board[6] != '') {
             removeMove();
             currentPiece = '';
+            winnerMessage(winner);
             return;
         }
         // Vertical Win
         else if (board[0] === board[3] && board[3] === board[6] && board[0] != '') {
             removeMove();
             currentPiece = '';
+            winnerMessage(winner);
             return;
         }
         else if (board[1] === board[4] && board[4] === board[7] && board[1] != '') {
             removeMove();
             currentPiece = '';
+            winnerMessage(winner);
             return;
         }
         else if (board[2] === board[5] && board[5] === board[8] && board[2] != '') {
             removeMove();
             currentPiece = '';
+            winnerMessage(winner);
             return;
         }
         // Diagonal Win
         else if (board[0] === board[4] && board[4] === board[8] && board[0] != '') {
             removeMove();
             currentPiece = '';
+            winnerMessage(winner);
             return;
         }
         else if (board[2] === board[4] && board[4] === board[6] && board[2] != '') {
             removeMove();
             currentPiece = '';
+            winnerMessage(winner);
             return;
         }
         // Draw
@@ -104,8 +112,9 @@ const playGame = (() => {
                 if (board[i] != '') {
                     counter++;
                     if (counter === 9) {
-                        console.log('draw')
+                        winner = 'Draw';
                         currentPiece = '';
+                        winnerMessage(winner);
                         return;
                     };
                 };
@@ -126,13 +135,31 @@ const playGame = (() => {
         })
     }
     addMove();
-    return {addMove}
 
     // Winner message 
-    function winnerMessage() {
+    function winnerMessage(player) {
         let winner = document.querySelector('.winner');
+        let close = document.querySelector('.close');
+        let winnerText = document.querySelector('.winnerText');
+        let newGame = document.querySelector('#newBtn');
+
+        winner.style.display = 'block';
+        winnerText.innerHTML = player;
+
+        newGame.addEventListener('click', () => {
+            createBoard();
+            winner.style.display = 'none';
+        });
+
+
+        close.onclick = () => {
+            winner.style.display = 'none';
+            winnerText.innerHTML = '';
+        }
         
+
     }
+    return { addMove }
 })();
 
 
