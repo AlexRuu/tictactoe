@@ -142,7 +142,7 @@ const playGame = (() => {
 
     // Winner message 
     function winnerMessage(player, piece) {
-        const { createBoard } = render;
+
         let winner = document.querySelector('.winner');
         let close = document.querySelector('.close');
         let winnerText = document.querySelector('.winnerText');
@@ -154,6 +154,7 @@ const playGame = (() => {
         close.onclick = () => {
             winner.style.display = 'none';
             winnerText.innerHTML = '';
+            removeMove();
         }
         newGame.onclick = () => {
             winner.style.display = 'none';
