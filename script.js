@@ -141,7 +141,7 @@ const playGame = (() => {
     addMove();
 
     // Winner message 
-    function winnerMessage(player, piece) {
+    function winnerMessage(player) {
 
         let winner = document.querySelector('.winner');
         let close = document.querySelector('.close');
