@@ -20,10 +20,11 @@ const playerTwo = player('Player Two', 'O');
 const playGame = (() => {
     const { board } = gameBoard;
     let newBtn = document.querySelector('#resetButton')
-
+    let newGame = document.querySelector('#newBtn');
+    
     let currentPiece = '';
     let winner = '';
-
+    
     // Game marker
     const mark = (e) => {
         let desiredSquare = board[`${e.target.id}`];
@@ -50,6 +51,9 @@ const playGame = (() => {
         newBtn.addEventListener('click', () => {
             currentPiece = '';
         });
+        newGame.addEventListener('click', () => {
+            currentPiece = '';
+        })
     };
 
     // Look for a winner
@@ -58,51 +62,51 @@ const playGame = (() => {
         if (board[0] === board[1] && board[1] === board[2] && board[0] !== '') {
             removeMove();
             currentPiece = '';
-            winnerMessage(winner);
+            winnerMessage(winner, currentPiece);
             return;
         }
         else if (board[3] === board[4] && board[4] === board[5] && board[3] != '') {
             removeMove();
             currentPiece = '';
-            winnerMessage(winner);
+            winnerMessage(winner, currentPiece);
             return;
         }
         else if (board[6] === board[7] && board[7] === board[8] && board[6] != '') {
             removeMove();
             currentPiece = '';
-            winnerMessage(winner);
+            winnerMessage(winner, currentPiece);
             return;
         }
         // Vertical Win
         else if (board[0] === board[3] && board[3] === board[6] && board[0] != '') {
             removeMove();
             currentPiece = '';
-            winnerMessage(winner);
+            winnerMessage(winner, currentPiece);
             return;
         }
         else if (board[1] === board[4] && board[4] === board[7] && board[1] != '') {
             removeMove();
             currentPiece = '';
-            winnerMessage(winner);
+            winnerMessage(winner, currentPiece);
             return;
         }
         else if (board[2] === board[5] && board[5] === board[8] && board[2] != '') {
             removeMove();
             currentPiece = '';
-            winnerMessage(winner);
+            winnerMessage(winner, currentPiece);
             return;
         }
         // Diagonal Win
         else if (board[0] === board[4] && board[4] === board[8] && board[0] != '') {
             removeMove();
             currentPiece = '';
-            winnerMessage(winner);
+            winnerMessage(winner, currentPiece);
             return;
         }
         else if (board[2] === board[4] && board[4] === board[6] && board[2] != '') {
             removeMove();
             currentPiece = '';
-            winnerMessage(winner);
+            winnerMessage(winner, currentPiece);
             return;
         }
         // Draw
@@ -114,7 +118,7 @@ const playGame = (() => {
                     if (counter === 9) {
                         winner = 'Draw';
                         currentPiece = '';
-                        winnerMessage(winner);
+                        winnerMessage(winner, currentPiece);
                         return;
                     };
                 };
@@ -137,7 +141,8 @@ const playGame = (() => {
     addMove();
 
     // Winner message 
-    function winnerMessage(player) {
+    function winnerMessage(player, piece) {
+        const { createBoard } = render;
         let winner = document.querySelector('.winner');
         let close = document.querySelector('.close');
         let winnerText = document.querySelector('.winnerText');
@@ -146,17 +151,13 @@ const playGame = (() => {
         winner.style.display = 'block';
         winnerText.innerHTML = player;
 
-        newGame.addEventListener('click', () => {
-            createBoard();
-            winner.style.display = 'none';
-        });
-
-
         close.onclick = () => {
             winner.style.display = 'none';
             winnerText.innerHTML = '';
         }
-        
+        newGame.onclick = () => {
+            winner.style.display = 'none';
+        }
 
     }
     return { addMove }
@@ -177,6 +178,15 @@ const render = (() => {
 
         let resetButton = document.querySelector('#resetButton');
         resetButton.addEventListener('click', () => {
+            for (let j = 0; j < board.length; j++) {
+                board[j] = '';
+                currentPiece = '';
+            };
+            addMove();
+            createBoard();
+        });
+        let newGame = document.querySelector('#newBtn');
+        newGame.addEventListener('click', () => {
             for (let j = 0; j < board.length; j++) {
                 board[j] = '';
                 currentPiece = '';
