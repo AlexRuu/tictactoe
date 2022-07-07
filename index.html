@@ -1,35 +1,56 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" type="text/javascript" defer></script>
-    <title>Tic-Tac-Toe</title>
-</head>
-<body>
-    <div class="winner">
-        <div class="container">
-            <div class="close">&times;</div>
-            <div class="winnerText"></div>
-            <button id="newBtn">Play Again</button>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" type="text/javascript" defer></script>
+        <title>Tic-Tac-Toe</title>
+    </head>
+
+    <body>
+        <div class="titlePage">
+            <div class="titleContainer">
+                <form class="player">
+                    <div class="firstPlayer">
+                        <label for="playerOne">Player One </label>
+                        <input type="text" id="playerOne" class="playerOne">
+                    </div>
+                    <div class="secondPlayer">
+                        <label for="playerTwo">Player Two </label>
+                        <input type="text" id="playerTwo" class="playerTwo">
+                    </div>
+                </form>
+                <button id="startGame" class="button">Start Game</button>
+            </div>
         </div>
-    </div>
-    
-    <h1 id="title">Tic-Tac-Toe</h1>
-    <button id="resetButton">New Game</button>
+        <div class="game">
+            <div class="gameContainer">
+                <div class="winner">
+                    <div class="container">
+                        <div class="close">&times;</div>
+                        <div class="winnerText"></div>
+                        <button id="newBtn" class="button">Play Again</button>
+                    </div>
+                </div>
 
-    <div class="gameBoard">
-        <div id="0" class="gridBox"></div>
-        <div id="1" class="gridBox"></div>
-        <div id="2" class="gridBox"></div>
-        <div id="3" class="gridBox"></div>
-        <div id="4" class="gridBox"></div>
-        <div id="5" class="gridBox"></div>
-        <div id="6" class="gridBox"></div>
-        <div id="7" class="gridBox"></div>
-        <div id="8" class="gridBox"></div>
-    </div>
+                <h1 id="title">Tic-Tac-Toe</h1>
+                <button id="resetButton" class="button">New Game</button>
 
-</body>
+                <div class="gameBoard">
+                    <div id="0" class="gridBox"></div>
+                    <div id="1" class="gridBox"></div>
+                    <div id="2" class="gridBox"></div>
+                    <div id="3" class="gridBox"></div>
+                    <div id="4" class="gridBox"></div>
+                    <div id="5" class="gridBox"></div>
+                    <div id="6" class="gridBox"></div>
+                    <div id="7" class="gridBox"></div>
+                    <div id="8" class="gridBox"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+
 </html>
