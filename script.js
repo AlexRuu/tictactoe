@@ -63,12 +63,12 @@ const playGame = (() => {
         else if (currentPiece === playerOne.piece && desiredSquare === '') {
             currentPiece = playerTwo.piece;
             board.splice(e.target.id, 1, currentPiece);
-            winner = playerTwo.name;
+            winner = `${playerTwo.name} wins!`;
         }
         else if (currentPiece === playerTwo.piece && desiredSquare === '') {
             currentPiece = playerOne.piece;
             board.splice(e.target.id, 1, currentPiece);
-            winner = playerOne.name;
+            winner = `${playerOne.name} wins!`;
         };
 
         const { createBoard } = render;
@@ -175,7 +175,7 @@ const playGame = (() => {
         let newGame = document.querySelector('#newBtn');
 
         winner.style.display = 'block';
-        winnerText.innerHTML = `${player} wins!`;
+        winnerText.innerHTML = player;
 
         close.onclick = () => {
             winner.style.display = 'none';
