@@ -3,15 +3,40 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: Poppins, Open Sans, Arial, Helvetica, sans-serif;
 }
 
-body {
+.titlePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    gap: 15rem;
+}
+
+.game {
+    display: none;
+}
+
+.gameContainer {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    font-family: Poppins, Open Sans, Arial, Helvetica, sans-serif;
-
 }
 
 .gameBoard {
@@ -33,9 +58,9 @@ body {
     font-weight: bolder;
 }
 
-#resetButton, #newBtn {
+.button {
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px;
     background-color: transparent;
     color: black;
     border: solid black;
@@ -44,7 +69,7 @@ body {
     transition: all .5s ease;
 }
 
-#resetButton:hover, #newBtn:hover {
+.button:hover {
     background-color: black;
     color: white;
     cursor: pointer;
@@ -64,13 +89,13 @@ body {
 }
 
 @-webkit-keyframes animate {
-    from {opacity: 0}
-    to {opacity: 1}
+    from {top: -400px; opacity: 0}
+    to {top: 0px; opacity: 1}
 }
 
 @keyframes animate {
-    from {opacity: 0}
-    to {opacity: 1}
+    from {top: -400px; opacity: 0}
+    to {top: 0px; opacity: 1}
 }
 
 .container {
@@ -100,7 +125,7 @@ body {
 }
 
 .close:hover {
-    color: blue;
+    color: rgb(98, 98, 98);
     cursor: pointer;
 }
 
