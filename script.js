@@ -13,18 +13,44 @@ const player = (name, piece) => {
     return { name, piece };
 };
 
-const playerOne = player('Player One', "X");
-const playerTwo = player('Player Two', 'O');
-
 // Playing the game
 const playGame = (() => {
     const { board } = gameBoard;
+
+    let startGame = document.querySelector('#startGame');
+    let game = document.querySelector('.game');
+    let titlePage = document.querySelector('.titlePage');
+
+    startGame.addEventListener('click', () => {
+        game.style.display = 'block';
+        titlePage.style.display = 'none';
+        playerOne = '';
+        playerTwo = '';
+        let player1 = document.querySelector('.player1').value
+        let player2 = document.querySelector('.player2').value
+
+        if (player1.length === 0) {
+            playerOne = player('Player One', 'X');
+        }
+        else {
+            playerOne = player(player1, 'X');
+        }
+        if (player2 === '') {
+            playerTwo = player('Player Two', 'O');
+        }
+        else {
+            playerTwo = player(player2, 'O')
+        }
+        return playerOne;
+    });
+
+
     let newBtn = document.querySelector('#resetButton')
     let newGame = document.querySelector('#newBtn');
-    
+
     let currentPiece = '';
     let winner = '';
-    
+
     // Game marker
     const mark = (e) => {
         let desiredSquare = board[`${e.target.id}`];
@@ -149,7 +175,7 @@ const playGame = (() => {
         let newGame = document.querySelector('#newBtn');
 
         winner.style.display = 'block';
-        winnerText.innerHTML = player;
+        winnerText.innerHTML = `${player} wins!`;
 
         close.onclick = () => {
             winner.style.display = 'none';
